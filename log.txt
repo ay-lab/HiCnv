@@ -1,0 +1,14 @@
+#08/25/2017
+First release
+
+#09/02/2017
+Updated the ReadMe.txt files
+
+#11/28/2017
+Added the combine_multiple_replicates.pl script.
+If there are multiple replicates and generated multiple *.F_GC_MAP.bed and *.perREfragStats files, then this script 
+will combine all the *.F_GC_MAP.bed and *.perREfragStats files and generate a single "Sample.combined.F_GC_MAP.bed" 
+and "Sample.combined.perREfragStats". Use these combined files to run the next scripts under CNV_calling folder.
+
+Added "genome_wide_copy_number.r" script. This script will generate genome wide copy number plot. "hg19" is the
+default plot paprameter.
