@@ -9,7 +9,8 @@ while (i <= length(chr$V1)){
 	coordinate = as.integer(cp_perc_chr$V2+((cp_perc_chr$V3-cp_perc_chr$V2)/2))
 	data = data.frame(chromosome=as.character(cp_perc_chr$V1), coordinate, cn)
 	pdf(paste(as.character(chr$V1[i]),".copy_number.pdf",sep=""))
-	cnView(data, chr = as.character(chr$V1[i]), genome = "hg19", ideogram_txtSize = 2)
+	plot_theme <- ylim(0, 5)
+        cnView(data, chr = as.character(chr$V1[i]), genome = "hg19", ideogram_txtSize = 2, plotLayer = plot_theme)
 	dev.off()
 	i = i+1
 }
