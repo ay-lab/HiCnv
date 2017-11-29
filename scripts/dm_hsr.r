@@ -42,7 +42,5 @@ hsr = r[r$inter_norm_pval > 0.05 & r$mapped_norm_pval < 0.05,]
 dm  = r[r$inter_norm_pval < 0.05 & r$mapped_norm_pval < 0.05,]
 dm  = dm[table(dm$chrom) > 3,]
 hsr = hsr[table(hsr$chrom) > 3,]
-hsr = r
-dm  = r
 write.table(dm,file=paste("dm.",as.character(args[3]),".pval.txt",sep=""),row.names=F,col.names=T,quote=F,sep="\t")
 write.table(hsr,file=paste("hsr.",as.character(args[3]),".pval.txt",sep=""),row.names=F,col.names=T,quote=F,sep="\t")
