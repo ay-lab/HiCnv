@@ -1,3 +1,4 @@
+library(ggplot2)
 library(GenVisR)
 args <- commandArgs(trailingOnly = TRUE)
 chr = read.table("../scripts/chr.list",header=F)
