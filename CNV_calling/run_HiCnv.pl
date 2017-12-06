@@ -60,6 +60,7 @@ print out "mv $sample_name.$gc_limit\_$map_limit\_$frag_limit.pdf $sample_name\_
 print out "mv $sample_name.*.png $sample_name\_$stamp\_$job\_result/figures\n";
 print out "mv $sample_name.*.WithOutFilt.bed.bp_assigned.txt $sample_name\_$stamp\_$job\_result/breakpoints\n";
 print out "mv *.copy_number.pdf $sample_name\_$stamp\_$job\_result/figures/\n";
+print out "mv *_copynumber.txt $sample_name\_$stamp\_$job\_result/breakpoints/\n";
 print out "mv dm.$sample_name.pval.txt $sample_name\_$stamp\_$job\_result/breakpoints\n";
 print out "mv hsr.$sample_name.pval.txt $sample_name\_$stamp\_$job\_result/breakpoints\n";
 close out;
