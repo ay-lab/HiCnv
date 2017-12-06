@@ -12,6 +12,7 @@ while (i <= length(chr$V1)){
 	pdf(paste(as.character(chr$V1[i]),".copy_number.pdf",sep=""))
 	plot_theme <- ylim(0, 5)
         cnView(data, chr = as.character(chr$V1[i]), genome = "hg19", ideogram_txtSize = 2, plotLayer = plot_theme)
+	write.table(data,file=paste(as.character(chr$V1[i]),"_copynumber.txt",sep=""), row.name=F, quote=F, sep="\t")
 	dev.off()
 	i = i+1
 }
