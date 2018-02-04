@@ -12,3 +12,9 @@ and "Sample.combined.perREfragStats". Use these combined files to run the next s
 
 Added "genome_wide_copy_number.r" script. This script will generate genome wide copy number plot. "hg19" is the
 default plot paprameter.
+
+#02/03/2018
+Added exampleData folder under Read_coverage_generation. exampleData folder contains an output example file of forward and reverse read
+mapped bam files from HiC-Pro pipeline. This is a MCF7 HiC data (GSE66733), subsampled to generate bam files within size limits.
+run.sh file contains the commands to process the data in order to generate the *.perREfragStats and *.F_GC_MAP.bed files.
+This subsampled bam files are provided to show how the input files looks like to generate the *.perREfragStats and *.F_GC_MAP.bed files for further analysis.
