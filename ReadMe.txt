@@ -26,4 +26,4 @@ __________________________________________________________________
 
 Note:
 CNV calling requires GC content, mappability and fragment length information of every RE fragments. The *.F_GC_MAP.bed file contains all these information.
-The file can be created using create_F_GC_MAP_file.pl script available under "scripts/F_GC_MAP_Files/" folder.
+The file can be created using create_F_GC_MAP_file.pl script available under "scripts/F_GC_MAP_Files/" folder. To create the file, please run the create_F_GC_MAP_file.pl file inside the "scripts/F_GC_MAP_Files/" folder. 
