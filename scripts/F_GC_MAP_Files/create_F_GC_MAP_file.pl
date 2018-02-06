@@ -12,14 +12,14 @@ $frag = "HindIII_resfrag_hg19.bed"; #Change this file as per your experiment. Ex
 
 $read_length = 50; #This is the read length of your fastq file.
 
+$frag_size = 500;
+
 $frag_file_name = "HindIII_hg19.$frag_size.$read_length";
 
 $fasta_file = "hg19.fa"; #Needs hg19.fa or equivalent genome sequence file
 
 $map_bedgraph = "hg19.MapabilityAlign50mer.bedGraph"; #Need to download the mappability file separately similar to fastq read length
 #####################################################
-$frag_size = 500;
-
 $frag_half = $frag_size/2;
 
 open (out,">F_GC_MAP.file.sh");
