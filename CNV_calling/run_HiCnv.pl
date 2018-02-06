@@ -9,7 +9,7 @@ $map_limit   = 0.5;	#50% or above mappability
 
 $frag_limit  = 1000;	#1000bp or greater than fragment length 
 
-$ref_chrom   = "chr2";	#Reference chromosome to calculate PIC and labelling the CNVs
+$ref_chrom   = "chr2";	#Reference chromosome to calculate PIC and labelling the CNVs. This is a critical choise, please refer PMID 29048467, for reference choice.
 
 @chr_list    = `cat ../scripts/chr.list`;
 ################################################
