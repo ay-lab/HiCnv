@@ -104,6 +104,7 @@ while (i <= length(sample$V1)){
 			bw = c("optimal")
 		}
 		bic = data.frame(iter.num,bic.values)
+		#If there is no breakpoint, use mean normalized contact count to represent the chromosome.
 		if(is.na(d$state.mean)){d$state.mean = mean(d$count); d$seg.score = mean(d$count);}
 		write.table(d,file=as.character(paste(sample$V1[i],".",chr.list$V1[j],".xy.",bw,".max",sep="")),row.names=F,col.names=F,quote=F,sep="\t")
 		write.table(l$x1,file=as.character(paste(sample$V1[i],".",chr.list$V1[j],".x.",bw,".axis",sep="")),row.names=F,col.names=F,quote=F,sep="\t")
