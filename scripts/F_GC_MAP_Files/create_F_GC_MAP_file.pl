@@ -5,7 +5,10 @@
 #
 #### The following script will download the hg19 chromosomes. If you don't have the hg19.fa file (genome sequences in fasta format), then run the script.
 #### perl -e '@chr=qw(chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 chr9 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19 chr20 chr21 chr22 chrX chrY chrM); $i=0;while($i<=$#chr){chomp $chr[$i]; system("curl http://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/$chr[$i].fa.gz|zcat > hg19.$chr[$i].fa"); $i++;} system("cat hg19.*.fa > hg19.fa");'
-#
+# 
+#### If the chr*_random and chrUn_* sequences are also required then use the following commands
+#### curl http://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/md5sum.txt|awk '{print $2}'|perl -ne 'chomp $_; system("curl http://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/$_|zcat > hg19.$_.fa");'
+#### cat hg19.*.fa > hg19.fa
 #
 ############ User specific parameters ############
 $frag = "HindIII_resfrag_hg19.bed"; #Change this file as per your experiment. Example HindIII restriction fragment files are provided in the "HindIII_resfrag_files.zip" folder.
