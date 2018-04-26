@@ -39,32 +39,58 @@ while (i <= length(sample$V1)){
 		bic.values = c()
 		iter.num = c()
 		na.num = 0
+		
+		## April 26, 2018 ##
+		##########################################################		
+		#k = 2
+		#while (k <= 10){
+		#	print (k)
+		#	error  = try(HMMFit(y, nStates=k),silent=TRUE)
+		#	if (!inherits(error, "try-error")){
+	        #		ResFit = HMMFit(y, nStates=k)
+        	#		VitPath = viterbi(ResFit, y)
+        	#		hmm.list[[k]] = ResFit
+        	#		vitpath.list[[k]] = VitPath
+        	#		if (hmm.list[[k]]$convergence){
+        	#       		bic.values = c(bic.values,ResFit$BIC)
+        	#        		iter.num = c(iter.num,k)
+        	#		}else {
+		#			na.num = na.num+1
+		#		}
+		#		print (paste(k,ResFit$BIC,sep=""))
+		#	}
+       		#	k=k+1
+		#}
+		
 		k = 2
-		while (k <= 10){
-			print (k)
-			error  = try(HMMFit(y, nStates=k),silent=TRUE)
-			if (!inherits(error, "try-error")){
-	        		ResFit = HMMFit(y, nStates=k)
-        			VitPath = viterbi(ResFit, y)
-        			hmm.list[[k]] = ResFit
-        			vitpath.list[[k]] = VitPath
-        			if (hmm.list[[k]]$convergence){
-        	        		bic.values = c(bic.values,ResFit$BIC)
-        	        		iter.num = c(iter.num,k)
-        			}else {
-					na.num = na.num+1
-				}
-				print (paste(k,ResFit$BIC,sep=""))
-			}
-       			k=k+1
-		}
+                while (k <= 10){
+                        ResFit = try(HMMFit(y, nStates=k),silent=TRUE)
+                        if (!inherits(ResFit, "try-error")){
+                                VitPath = viterbi(ResFit, y)
+                                hmm.list[[k]] = ResFit
+                                VitPath = viterbi(ResFit, y)
+                                vitpath.list[[k]] = VitPath
+                                if (hmm.list[[k]]$convergence){
+                                        bic.values = c(bic.values,ResFit$BIC)
+                                        iter.num = c(iter.num,k)
+                                }else {
+                                        na.num = na.num+1
+                                }
+                                print (paste(k,ResFit$BIC,sep=""))
+                        } else {
+                                na.num = na.num+1
+                        }
+                        k=k+1
+                }
+		##########################################################
+		
 		num.states = iter.num[which.min(bic.values)]
 		if (na.num == 9 | length(bic.values) == 0){
 			k = 2
 			ResFit = HMMFit(y, nStates=k)
-                        VitPath = viterbi(ResFit, y)
-                        hmm.list[[k]] = ResFit
-                        vitpath.list[[k]] = VitPath
+                      	VitPath = viterbi(ResFit, y)
+                     	hmm.list[[k]] = ResFit
+               		vitpath.list[[k]] = VitPath
 			num.states = 2
 		}
 		state.mean = as.integer(vitpath.list[[num.states]]$states)
