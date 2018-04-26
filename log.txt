@@ -18,3 +18,6 @@ Added exampleData folder under Read_coverage_generation. exampleData folder cont
 mapped bam files from HiC-Pro pipeline. This is a MCF7 HiC data (GSE66733), subsampled to generate bam files within size limits.
 run.sh file contains the commands to process the data in order to generate the *.perREfragStats and *.F_GC_MAP.bed files.
 This subsampled bam files are provided to show how the input files looks like to generate the *.perREfragStats and *.F_GC_MAP.bed files for further analysis.
+
+#04/26/2018
+Fixed the bug in "kde_hmm_segmentation.r" script which sometimes tends to crash the program while running a diploid chromosome segmentation part
