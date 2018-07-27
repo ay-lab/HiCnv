@@ -65,9 +65,10 @@ $hic_bwt2_folder_REV = "mate2.bam";
 
 This is enable HiCnv to read the bam files.
 
-The  folder contains example data to convert Hi-C sam files into HiCnv format.
+The "samToHiCProFormat_Example" folder contains example data to convert Hi-C sam files into HiCnv format.
 
 Note: In forward.sam and reverse,sam files the total number of reads should be equal and assumed that each row of the two files should represent the same read.
+_____________________________________________________________________
 
 Contact
 
