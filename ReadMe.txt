@@ -1,7 +1,6 @@
 HiCnv is a pipeline to call CNVs from Hi-C data.
 "scripts" folder contains all the scripts to call CNVs from Hi-C data.
 __________________________________________________________________
-
 Step 1:
 
 A. Process your Hi-C fastq files with HiCPro pipline (https://github.com/nservant/HiC-Pro)
@@ -14,7 +13,6 @@ D. "1DReadCoverage.*.sh" will require a restriction fragment specific *.fragment
 
 E. Running "1DReadCoverage.*.sh" will create the *.perREfragStats and *.F_GC_MAP.bed files from Hi-C data for downstream processing.
 __________________________________________________________________
-
 Step2:
 
 A. Copy the *.perREfragStats and *.F_GC_MAP.bed files from "Read_coverage_generation" directory to "CNV_calling" directory.
@@ -23,13 +21,11 @@ B. Run "CNV_calling/run_HiCnv.pl" script to call CNVs from Hi-C data.
 
 C. "T47D.example.input.zip" under "CNV_calling" has the example files.
 __________________________________________________________________
-
 Note:
 CNV calling requires GC content, mappability and fragment length information of every RE fragments. The *.F_GC_MAP.bed file contains all these information.
 The file can be created using create_F_GC_MAP_file.pl script available under "scripts/F_GC_MAP_Files/" folder. To create the file, please run the create_F_GC_MAP_file.pl file inside the "scripts/F_GC_MAP_Files/" folder. 
 
 _____________________________________________________________________
-
 Covert an aligned Hi-C sam file into HiCnv usable format:
 
 The script "samToHiCProFormat.pl" under "scripts/" folder takes an aligned HiC file in sam format. This can be a merged.sam (both forward and reverse reads merged/paired format) file or in single format file where forward and reverse reads are mapped into separate files (e.g forward.sam and reverse.sam).
@@ -69,7 +65,6 @@ The "samToHiCProFormat_Example" folder contains example data to convert Hi-C sam
 
 Note: In forward.sam and reverse,sam files the total number of reads should be equal and assumed that each row of the two files should represent the same read.
 _____________________________________________________________________
-
 Contact
 
 abhijit@lji.org (Abhijit Chakraborty)
