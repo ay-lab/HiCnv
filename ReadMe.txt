@@ -59,7 +59,7 @@ Then in the run_1DReadCoverage.pl script of HiCnv, change the following variable
 $hic_bwt2_folder_FWD = "mate1.bam";
 $hic_bwt2_folder_REV = "mate2.bam";
 
-This is enable HiCnv to read the bam files.
+This will enable HiCnv to read the bam files.
 
 The "samToHiCProFormat_Example" folder contains example data to convert Hi-C sam files into HiCnv format.
 
