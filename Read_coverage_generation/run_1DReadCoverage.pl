@@ -9,11 +9,11 @@ $prefix = "WM2664"; #For replicate 1 and change the name while doing for replica
 
 #$hic_bwt2_folder_FWD = `ls $hic_bwt2_folder/*1_*.bwt2merged.bam`;
 
-$hic_bwt2_folder_FWD = "/mnt/BioAdHoc/Groups/vd-ay/abhijit/overflow/proj_overflow/KadirMelanomaHiC_2017/WM2664_102617/hicresult_rep3/bowtie_results/bwt2/data/WM2664_Rep3_R1_hg19.bwt2merged.bam";
+$hic_bwt2_folder_FWD = "/mnt/BioAdHoc/Groups/vd-ay/abhijit/overflow/HiC-Pro/hicresult_rep1/bowtie_results/bwt2/data/Rep1_R1_hg19.bwt2merged.bam";
 
 #$hic_bwt2_folder_REV = `ls $hic_bwt2_folder/*2_*.bwt2merged.bam`;
 
-$hic_bwt2_folder_REV = "/mnt/BioAdHoc/Groups/vd-ay/abhijit/overflow/proj_overflow/KadirMelanomaHiC_2017/WM2664_102617/hicresult_rep3/bowtie_results/bwt2/data/WM2664_Rep3_R2_hg19.bwt2merged.bam";
+$hic_bwt2_folder_REV = "/mnt/BioAdHoc/Groups/vd-ay/abhijit/overflow/HiC-Pro/hicresult_rep1/bowtie_results/bwt2/data/Rep1_R2_hg19.bwt2merged.bam";
 
 $fragment_file = "HindIII_resfrag_hg19.bed"; # Change this as per your experiment
 
