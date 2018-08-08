@@ -34,7 +34,7 @@ while ($i <= $#chr_list){
 	print out "echo \"chr\tstart\tend\tgc\tmap\tfrag\tcount\tnorm.count\" > $sample_name.$chr_list[$i].F_GC_MAP.NormCount.$gc_limit\_$map_limit\_$frag_limit.Index.bed\n";
 	print out "grep -v \"start\" $sample_name.F_GC_MAP.NormCount.$gc_limit\_$map_limit\_$frag_limit.bed|grep \"$chr_list[$i]\\b\"|awk '{if(\$4 >= $gc_limit && \$5 >= $map_limit && \$6 >= $frag_limit){print}}' |awk '{c++;print \$1\"\\t\"c\"\\t\"(c+1)\"\\t\"\$4\"\\t\"\$5\"\\t\"\$6\"\\t\"\$7\"\\t\"\$8}' >> $sample_name.$chr_list[$i].F_GC_MAP.NormCount.$gc_limit\_$map_limit\_$frag_limit.Index.bed\n";
 	print out "grep -v \"start\" $sample_name.F_GC_MAP.NormCount.$gc_limit\_$map_limit\_$frag_limit.bed|grep \"$chr_list[$i]\\b\"|awk '{if(\$4 >= $gc_limit && \$5 >= $map_limit && \$6 >= $frag_limit){print}}' |awk '{c++;print \$1\"\\t\"c\"\\t\"(c+1)\"\\t\"\$4\"\\t\"\$5\"\\t\"\$6\"\\t\"\$7\"\\t\"\$8\"\\t\"\$2\"\\t\"\$3}' > $sample_name.$chr_list[$i].Index.file\n";
-	print out "Rscript ../scripts/kde_hmm_segmentation.r $gc_limit $map_limit $frag_limit $sample_name 0 $k\n";
+	print out "Rscript --max-ppsize=500000 ../scripts/kde_hmm_segmentation.r $gc_limit $map_limit $frag_limit $sample_name 0 $k\n";
 	$i++;
 }
 print out "\n";
