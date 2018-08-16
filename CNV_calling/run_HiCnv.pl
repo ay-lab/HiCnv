@@ -14,6 +14,9 @@ $frag_limit  = 1000;	#1000bp or greater than fragment length for 6bp cutter
 $ref_chrom   = "chr2";	#Reference chromosome to calculate PIC and labelling the CNVs. 
 #This is a critical choise, please refer PMID 29048467, for reference choice.
 
+$F_GC_MAP_File = "HindIII.hg19.fragments.F_GC_MAP.bed";
+#Change this as per your experiment 
+
 @chr_list    = `cat ../scripts/chr.list`;
 ################################################
 chomp $stamp;
@@ -45,7 +48,7 @@ print out "Rscript ../scripts/cnv_labelling.r $sample_name 0.40\n";
 print out "perl ../scripts/bp_calc.pl\n\n";
 print out "Rscript ../scripts/genome_wide_copy_number.r $sample_name.chrWise.txt\n\n";
 print out "#Scanning for double minutes and homogeneously staining regions\n";
-print out "Rscript ../scripts/dm_hsr.r $sample_name ../scripts/HindIII.hg19.fragments.F_GC_MAP.bed $sample_name $gc_limit $map_limit $frag_limit\n\n";
+print out "Rscript ../scripts/dm_hsr.r $sample_name ../scripts/$F_GC_MAP_File $sample_name $gc_limit $map_limit $frag_limit\n\n";
 print out "#Organizing result\n";
 print out "mkdir $sample_name\_$stamp\_$job\_result\n";
 print out "mkdir $sample_name\_$stamp\_$job\_result/raw_files\n";
