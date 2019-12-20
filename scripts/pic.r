@@ -1,6 +1,7 @@
 library(ineq)
 args <- commandArgs(trailingOnly = TRUE)
-all.chr = data.frame(chrom=c("chr1","chr2","chr3","chr4","chr5","chr6","chr7","chr8","chr9","chr10","chr11","chr12","chr13","chr14","chr15","chr18","chr16","chr17","chr19","chr20","chr21","chr22","chrX"))
+all.chr = read.table("../scripts/chr.list",header=F)
+colnames(all.chr) <- c("chrom")
 gc_limit = as.numeric(args[4])
 map_limit = as.numeric(args[5])
 frag_limit = as.numeric(args[6])
