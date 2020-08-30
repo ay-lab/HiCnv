@@ -1,4 +1,4 @@
-HiCnv is a pipeline to call CNVs from Hi-C data.
+## HiCnv is a pipeline to call CNVs from Hi-C data.
 "scripts" folder contains all the scripts to call CNVs from Hi-C data.
 __________________________________________________________________
 Step 1:
