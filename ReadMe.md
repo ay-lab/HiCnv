@@ -38,25 +38,18 @@ or
 
 perl samToHiCProFormat.pl -format single -sam_file forward.sam,reverse.sam -strand 2 -chr 3 -pos 4 -mapq 5 -read_len 6 -read_pos 10 -out_file test
 
-perl samToHiCProFormat.pl -help
-
--format = either paired or single
--sam_file = Name of the paired sam file. When format is single provide comma separated forward and reverse mapped read files e.g. forward.sam,reverse.sam.
--strand = sam file field that denotes the strand information for mate pair. If unknown make it 0 and everything will be one the positive strand mapping.
--chr = sam file field that denotes the chromosome information for pair.
--pos = sam file field that denotes the chromosome position information for pair.
--mapq = sam file field that denotes the quality score.
--read_len = sam file field that denotes the read length.
--read_pos = sam file field that denotes the read position.
+Check for the full details by "perl samToHiCProFormat.pl -help"
 
 Script will create test.mate1.sam and test.mate2.sam file. Then add the header lines using samtools
 
 samtools view -bT hg19.fa test.mate1.sam > mate1.bam
+
 samtools view -bT hg19.fa test.mate2.sam > mate2.bam
 
 Then in the run_1DReadCoverage.pl script of HiCnv, change the following variable to 
 
 $hic_bwt2_folder_FWD = "mate1.bam";
+
 $hic_bwt2_folder_REV = "mate2.bam";
 
 This will enable HiCnv to read the bam files.
