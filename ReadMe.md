@@ -25,6 +25,7 @@ HiCnv is a pipeline to call CNVs from Hi-C data.
 CNV calling requires GC content, mappability and fragment length information of every RE fragments. The *.F_GC_MAP.bed file contains all these information.
 The file can be created using F_GC_MAP.file.sh script available under "scripts/F_GC_MAP_Files/" folder. To create the file, please run the script inside the "scripts/F_GC_MAP_Files/" folder. Also, change the variables as per the Hi-C experiment. 
 
+For more details check "Rscript hicnv_v2.R --help".
 
 # Covert an aligned Hi-C sam file into HiCnv usable format:
 
@@ -58,6 +59,11 @@ The "samToHiCProFormat_Example" folder contains example data to convert Hi-C sam
 
 Note: In forward.sam and reverse,sam files the total number of reads should be equal and assumed that each row of the two files should represent the same read.
 
+# Double Minute (DM) and Homogeneously Staining Regions (HSR) scanning
+
+Run ./scripts/dm_hsr.r to scan DM and HSR regions. 
+
+For more details check "Rscript ./scripts/dm_hsr.r --help"
 
 # Contact
 
