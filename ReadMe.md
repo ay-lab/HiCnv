@@ -3,7 +3,7 @@
 HiCnv is a pipeline to call CNVs from Hi-C data.
 "scripts" folder contains all the scripts to call CNVs from Hi-C data.
 
-# Step 1: Process the HiC data and generate coverage, GC content, mappability and fragment length information file
+# Steps: Process the HiC data and generate coverage, GC content, mappability and fragment length information file
 
 1) Process your Hi-C fastq files with HiCPro pipline (https://github.com/nservant/HiC-Pro)
 
@@ -19,6 +19,68 @@ HiCnv is a pipeline to call CNVs from Hi-C data.
 
 5) Running "1DReadCoverage.*.sh" will create the *.perREfragStats and *.F_GC_MAP.bed files from Hi-C data for downstream processing.
 
+6) Run hicnv_v2.R, check the usage for more details.
+
+```bash
+Usage: hicnv_v2.R [options]
+
+
+Options:
+        --refeature=REFEATURE
+                A five column restriction enzyme cutsite bed file with GC content, mappability, fragment length infomation
+
+                <chr>   <start> <end>   <GC frequency>  <mappability>   <fragment length>
+
+
+        --coverage=COVERAGE
+                A bedGraph file with read coverage signal (5th column).
+
+                Alternatively, the .perREfragStats file
+
+
+        --gccutoff=GCCUTOFF
+                GC content cutoff. Anything below <gccutoff> will be removed [Default is 0.2].
+
+
+        --mapcutoff=MAPCUTOFF
+                Mappability cutoff. Anything below <mapcutoff> will be removed [Default is 0.5].
+
+
+        --fragcutoff=FRAGCUTOFF
+                Fragment length cutoff. Anything below <fragcutoff> will be removed [Default is 150].
+
+                For Hi-C experiments with 4bp cut enzyme, this value is 150, for 6bp enzymes this value should be 1000.
+
+
+        --refchrom=REFCHROM
+                Name of the reference chromosome for CNV detection.
+
+                If no name is provided then HiCnv proceed to estimate proportion of interaction count or PIC to decide a reference chromosome.
+
+
+        --bandwidth=BANDWIDTH
+                Genomic distance bandwidth with which Kernel smoothing will be performed [Default 1Mb].
+
+
+        --hmmstate=HMMSTATE
+                Number of HMM states to be searched in each chromosome [Default 10].
+
+
+        --threshold=THRESHOLD
+                Threshold value to define amplification and deletion with respect to normal region [Default is 0.2 i.e. deviation of 20% from mean normal value will be labeled as CNV].
+
+
+        --prefix=PREFIX
+                All the files and folders will be created with this name.
+
+
+        --cpu=CPU
+                Number of threads to be used [Default 1].
+
+
+        -h, --help
+                Show this help message and exit
+```
 
 # Note:
 
