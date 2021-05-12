@@ -59,7 +59,7 @@ Options:
 
 
         --bandwidth=BANDWIDTH
-                Genomic distance bandwidth with which Kernel smoothing will be performed [Default 1Mb].
+                Genomic distance bandwidth with which Kernel smoothing will be performed [Default 1Mb, set it 0 if unsure].
 
 
         --hmmstate=HMMSTATE
