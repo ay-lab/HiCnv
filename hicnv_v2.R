@@ -284,7 +284,12 @@ Min_bic <- function(hmm_obj,nstates,chr_obj) {
     i <- i + 1
   }
   d <- na.omit(as.data.frame(do.call(cbind,d)))
-  chr_obj[,"state"] <- hmm_obj[[d[which.min(d$bic),]$nstate]][[1]]@posterior$state
+  if (nrow(d) > 0) {
+    chr_obj[,"state"] <- hmm_obj[[d[which.min(d$bic),]$nstate]][[1]]@posterior$state
+  } else {
+    cat ("No segments found, assigning a single segment\n")
+    chr_obj[,"state"] <- 1
+  }
   return(chr_obj)
 }
 
@@ -357,8 +362,8 @@ ChromWise_KDE_HMM_Seg <- function(i, chr, bdg, tpm, g, m, f, pfx, ref, hmm_state
   ## Change the y_grid parameter to reduce the grid size and thus reduces time for smoothing
   cat ("Performing Kernel smoothing on ",as.vector(chr[i]),"\n")
   gridsize <- c(nrow(bdg_chr),round(max(bdg_chr$norm.count) * y_grid))
-  #bandwidth <- c(bw, 2)
-  bandwidth <- c(bw, KernSmooth::dpik(bdg_chr$norm.count))
+  bandwidth <- c(bw, 2)
+  #bandwidth <- c(bw, KernSmooth::dpik(bdg_chr$norm.count))
   x.dir <- c(min(bdg_chr$start.index),max(bdg_chr$start.index))
   y.dir <- c(min(bdg_chr$norm.count),max(bdg_chr$norm.count))
 
