@@ -14,8 +14,7 @@ option_list = list(
   
   make_option("--refeature", type="character", help="A five column restriction enzyme cutsite bed file with GC content, mappability, fragment length infomation\n
   \t\t<chr>\t<start>\t<end>\t<GC frequency>\t<mappability>\t<fragment length>\n"),
-  make_option("--coverage", type="character", help="A bedGraph file with read coverage signal (5th column).\n
-  \t\tAlternatively, the .perREfragStats file\n"),
+  make_option("--coverage", type="character", help="A bedGraph/.perREfragStats file with read coverage signal (4th column).\n"),
   make_option("--gccutoff", type="numeric", default=0.2, help="GC content cutoff. Anything below <gccutoff> will be removed [Default is 0.2].\n"),
   make_option("--mapcutoff", type="numeric", default=0.5, help="Mappability cutoff. Anything below <mapcutoff> will be removed [Default is 0.5].\n"),
   make_option("--fragcutoff", type="integer", default=150, help="Fragment length cutoff. Anything below <fragcutoff> will be removed [Default is 150].\n
@@ -352,11 +351,10 @@ ChromWise_KDE_HMM_Seg <- function(i, chr, bdg, tpm, g, m, f, pfx, ref, hmm_state
 
   ## Calculate bandwidth and gridsize here
   frag_mean <- mean(bdg_chr$frag)
-  #bw <- win/frag_mean
   if (win > 0) {
-    bw <- win
+    bw <- win/frag_mean
   } else if (win == 0) {
-    bw <- KernSmooth::dpik(bdg_chr$start)
+    bw <- KernSmooth::dpik(bdg_chr$start)/frag_mean
   }
   
   ## Change the y_grid parameter to reduce the grid size and thus reduces time for smoothing
