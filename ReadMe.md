@@ -33,9 +33,7 @@ Options:
 
 
         --coverage=COVERAGE
-                A bedGraph file with read coverage signal (5th column).
-
-                Alternatively, the .perREfragStats file
+                A bedGraph/.perREfragStats file with read coverage signal (4th column).
 
 
         --gccutoff=GCCUTOFF
@@ -80,6 +78,7 @@ Options:
 
         -h, --help
                 Show this help message and exit
+                        
 ```
 
 # Note:
