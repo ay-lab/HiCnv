@@ -249,12 +249,17 @@ PICEstimate <- function(gc_limit, map_limit, frag_limit, prefix, ref) {
 }
 
 ## Kernal smoothing followed by HMM segmentation is performed ##
+## 03/28/24 - Due to change in the output data structure of the depmixS4 package an
+## update in the Hmm_func and Min_bic function is made
+
 Hmm_func <- function(n,chr_obj) {
 
   h <- depmixS4::depmix(smooth_count~1,family=gaussian(),nstates=n,data=chr_obj)
   result <- tryCatch({
     f <- depmixS4::fit(h)
-    b <- BIC(f)      
+    b <- BIC(f)
+    # Added on 03/28/24
+    f <- f@posterior
     return(list(f,b))
   }, warning = function(e) {
     cat ("HMM did not converged for ",n,"\n")
@@ -285,7 +290,10 @@ Min_bic <- function(hmm_obj,nstates,chr_obj) {
   d <- na.omit(as.data.frame(do.call(cbind,d)))
   print (d[which.min(d$bic),]$nstate)
   if (nrow(d) > 0) {
-    chr_obj[,"state"] <- hmm_obj[[d[which.min(d$bic),]$nstate]][[1]]@posterior$state
+    # Added on 03/28/24
+    chr_obj[,"state"] <- hmm_obj[[unlist(d[which.min(d$bic),]$nstate)]][[1]]$state
+    #chr_obj[,"state"] <- hmm_obj[[d[which.min(d$bic),]$nstate]][[1]]@posterior$state
+     
   } else {
     chr_obj[,"state"] <- 1
     cat ("No segments found\n")
