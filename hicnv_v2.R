@@ -288,6 +288,7 @@ Min_bic <- function(hmm_obj,nstates,chr_obj) {
     i <- i + 1
   }
   d <- na.omit(as.data.frame(do.call(cbind,d)))
+  d <- d[!d$bic == "NULL",]
   print (d[which.min(d$bic),]$nstate)
   if (nrow(d) > 0) {
     # Added on 03/28/24
